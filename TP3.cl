@@ -3,7 +3,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(setq r1 '(R1 ((GREATER annee 1950)(MEMBER instrument (GuitareEletrique clavier batterie)))(genre rock)))
+(setq r1 '(R1 ((LESSER annee 1950))((nonGenre Rock))))
+(setq r2 '(R2 ((LESSER annee 1980))((nonGenre HeavyMetal))))
+(setq r3 '(R3 ((MEMBER instrument (GuitareElectrique Batterie Basse Clavier)))((classe rockMetal))))
+(setq r4 '(R4 ((EQUAL cri T)(EQUAL classe rockMetal))((genre HeavyMetal)(nonGenre Rock))))
+(setq r5 '(R5 ((EQUAL classe rockMetal))((genre HeavyMetal)(Genre Rock))))
+
+
+(setq bdr (list r1 r2 r3 r4 r5))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;GETTERs;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun getRuleName (rule)
   (car rule)
