@@ -22,7 +22,8 @@
       (setq r12 '(R12 ((EQUAL type_instruments electronique) ligne_instrumentale_repetitive)) (clase Techno))))
 
 ; règles pour déterminer le sous-genre de techno
-(setq r13 '(R13 ((EQUAL classe Techno) (
+(setq r13 '(R13 ((EQUAL classe Techno) (EQUAL voix T) (EQUAL rythme minimanl)) (genre House))))
+(setq 
 
 
 (setq bdr (list r1 r2 r3 r4 r5))
