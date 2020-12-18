@@ -20,12 +20,12 @@
       (setq r8 '(R8 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))))
       ;;J'adore cete nouvelle R8, elle est carrément cool et nous fait une belle profondeur !!! Bravo pour l'edit !
       (setq r11 '(R11 ((EQUAL type_instruments electronique) (NOT (EQUAL voix chant))) (classe Rap)))) 
-      (setq r12 '(R12 ((EQUAL type_instruments electronique) (EQUAL ligne_instrumentale_repetitive T)) (classe Techno))))
+      (setq r12 '(R12 ((EQUAL type_instruments electronique) (MEMBER repetitive ligne_instrumentale)) (classe Techno))))
 
 ; règles pour déterminer le sous-genre de techno
-(setq r13 '(R13 ((EQUAL classe Techno) (EQUAL voix T) (EQUAL rythme minimanl)) (genre House))))
+(setq r13 '(R13 ((EQUAL classe Techno) (EQUAL voix T) (EQUAL rythme minimal)) (genre House))))
 (setq r14 '(R14 ((EQUAL classe Techno) (MEMBER sythetiseur_Roland_TB_303 instruments)) (genre Acid_house))))
-(setq r15 '(R15 ((EQUAL classe Techno) (E
+(setq r15 '(R15 ((EQUAL classe Techno) (EQUAL effet reverb) (MEMBER un_peu_melodique ligne_instrumentale)) (genre Trance))))
 
 
 (setq bdr (list r1 r2 r3 r4 r5))
