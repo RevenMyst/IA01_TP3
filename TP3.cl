@@ -24,7 +24,8 @@
 
 ; règles pour déterminer le sous-genre de techno
 (setq r13 '(R13 ((EQUAL classe Techno) (EQUAL voix T) (EQUAL rythme minimanl)) (genre House))))
-(setq 
+(setq r14 '(R14 ((EQUAL classe Techno) (MEMBER sythetiseur_Roland_TB_303 instruments)) (genre Acid_house))))
+(setq r15 '(R15 ((EQUAL classe Techno) (E
 
 
 (setq bdr (list r1 r2 r3 r4 r5))
