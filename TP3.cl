@@ -11,8 +11,8 @@
 (setq r6 '(R6 ((GREATER bpm 105))((nonGenre Rap))))
 (setq r7 '(R7 ((EQUAL voix NIL))((nonGenre Rap))))
 (setq r8 '(R8 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((genre Rap))))
-(setq r9 '(R9 ((EQUAL classe Rap)(member Theme (Inegalites Politique))((classe RapConscient))))
-(setq r10 '(R10 ((EQUAL classe Rap)(member Theme (Drogue Argent Meurtres Police))((classe RapGangsta))))
+(setq r9 '(R9 ((EQUAL genre Rap)(member Theme (Inegalites Politique))((sousGenre RapConscient))))
+(setq r10 '(R10 ((EQUAL genre Rap)(member Theme (Drogue Argent Meurtres Police))((sousGenre RapGangsta))))
 
 ;;; Problème : les "instruments" sont les mêmes en techno qu'en rap
       ;; je propose cette solution pour remplacer la règle R8
