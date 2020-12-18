@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;BASE DE REGLES;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;;BONSOIR
 
 (setq r1 '(R1 ((LESSER annee 1950))((nonGenre Rock))))
 (setq r2 '(R2 ((LESSER annee 1980))((nonGenre HeavyMetal))))
