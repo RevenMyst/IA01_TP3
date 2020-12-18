@@ -18,6 +18,7 @@
       ;; je propose cette solution pour remplacer la règle R8
       ;; c'est juste un exemple, on pourra choisir d'autres critères pour séparer la techno et le rap
       (setq r8 '(R8 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))))
+      ;;J'adore cete nouvelle R8, elle est carrément cool et nous fait une belle profondeur !!! Bravo pour l'edit !
       (setq r11 '(R11 ((EQUAL type_instruments electronique) (NOT (EQUAL voix chant))) (classe Rap)))) 
       (setq r12 '(R12 ((EQUAL type_instruments electronique) ligne_instrumentale_repetitive)) (clase Techno))))
 
