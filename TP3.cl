@@ -14,6 +14,15 @@
 (setq r9 '(R9 ((EQUAL classe Rap)(member Theme (Inegalites Politique))((classe RapConscient))))
 (setq r10 '(R10 ((EQUAL classe Rap)(member Theme (Drogue Argent Meurtres Police))((classe RapGangsta))))
 
+;;; Problème : les "instruments" sont les mêmes en techno qu'en rap
+      ;; je propose cette solution pour remplacer la règle R8
+      ;; c'est juste un exemple, on pourra choisir d'autres critères pour séparer la techno et le rap
+      (setq r8 '(R8 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))))
+      (setq r11 '(R11 ((EQUAL type_instruments electronique) (NOT (EQUAL voix chant))) (classe Rap)))) 
+      (setq r12 '(R12 ((EQUAL type_instruments electronique) ligne_instrumentale_repetitive)) (clase Techno))))
+
+; règles pour déterminer le sous-genre de techno
+(setq r13 '(R13 ((EQUAL classe Techno) (
 
 
 (setq bdr (list r1 r2 r3 r4 r5))
