@@ -8,6 +8,12 @@
 (setq r3 '(R3 ((MEMBER instrument (GuitareElectrique Batterie Basse Clavier)))((classe rockMetal))))
 (setq r4 '(R4 ((EQUAL cri T)(EQUAL classe rockMetal))((genre HeavyMetal)(nonGenre Rock))))
 (setq r5 '(R5 ((EQUAL classe rockMetal))((genre HeavyMetal)(Genre Rock))))
+(setq r6 '(R6 ((GREATER bpm 105))((nonGenre Rap))))
+(setq r7 '(R7 ((EQUAL voix NIL))((nonGenre Rap))))
+(setq r8 '(R8 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((genre Rap))))
+(setq r9 '(R9 ((EQUAL classe Rap)(member Theme (Inegalites Politique))((classe RapConscient))))
+(setq r10 '(R10 ((EQUAL classe Rap)(member Theme (Drogue Argent Meurtres Police))((classe RapGangsta))))
+
 
 
 (setq bdr (list r1 r2 r3 r4 r5))
