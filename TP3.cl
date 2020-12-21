@@ -98,3 +98,27 @@
 
   )
 
+(defun checkMEMBERPrem (prem bdf)
+  (let ((res T))
+    (if (assoc (getPremName prem) bdf)
+        (dolist (x (cadr (assoc (getPremName prem) bdf)) res)
+          (if (NOT (member x (getPremValue prem))) 
+              (setq res NIL)         
+            )
+          )
+      NIL
+      )
+    )
+  )
+(defun checkCONTAINPrem (prem bdf)
+  (let ((res NIL))
+    (if (assoc (getPremName prem) bdf)
+        (dolist (x (cadr (assoc (getPremName prem) bdf)) res)
+          (if (EQUAL x (getPremValue prem)) 
+              (setq res T)         
+            )
+          )
+      NIL
+      )
+    )
+  )
