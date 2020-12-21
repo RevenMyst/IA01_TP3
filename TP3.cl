@@ -2,31 +2,47 @@
 ;;;;;;;;;;BASE DE REGLES;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(setq bdr '(
+            ;; ---General : 100 --- ;;
 
-(setq r1 '(R1 ((LESSER annee 1950))((nonGenre Rock))))
-(setq r2 '(R2 ((LESSER annee 1980))((nonGenre HeavyMetal))))
-(setq r3 '(R3 ((MEMBER instrument (GuitareElectrique Batterie Basse Clavier)))((type_instruments electrique))))
-(setq r4 '(R4 ((EQUAL voix cri)(EQUAL type_instruments electrique))((genre HeavyMetal)(nonGenre Rock))))
-(setq r5 '(R5 ((EQUAL type_instruments electrique))((genre HeavyMetal)(Genre Rock))))
-(setq r6 '(R6 ((GREATER bpm 105))((nonGenre Rap))))
-(setq r7 '(R7 ((EQUAL voix NIL))((nonGenre Rap))))
-(setq r8 '(R8 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))))
-(setq r9 '(R9 ((MEMBER paroles (Politique Inegalites)))((Theme engage))))
-(setq r10 '(R10 ((MEMBER paroles (Drogue Argent Meurtres Police)))((theme sombre))))
-(setq r11 '(R11 ((EQUAL type_instruments electronique) (EQUAL voix parle)) ((classe Rap))))
-(setq r12 '(R12 ((EQUAL classe Rap)(EQUAL Theme sombre)((genre GangstaRap)))))
-(setq r13 '(R13 ((EQUAL classe Rap)(EQUAL Theme engage)((genre RapConscient)))))
-(setq r14 '(R14 ((EQUAL classe Rap) (CONTAIN ligne_instrumentale melodique) (EQUAL vulgarite NIL)) ((genre RapCommercial))))
+            (R100 ((EQUAL parole mort))((theme violence)))
+            (R101 ((EQUAL parole meurtre))((theme violence)))
+            (R102 ((EQUAL parole crime))((theme violence)))
+            (R103 ((EQUAL parole politique))((theme engage)))
+            (R104 ((EQUAL parole inegalite))((theme engage)))
 
+            ;; ---Rock Metal : 200 --- ;;
 
-(setq r30 '(R30 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))))
-(setq r31 '(R31 ((EQUAL type_instruments electronique) (CONTAIN ligne_instrumentale repetitive)) (classe Techno))))
-(setq r32 '(R32 ((EQUAL classe Techno) (EQUAL voix chant) (EQUAL rythme minimal)) (genre House))))
-(setq r33 '(R33 ((EQUAL classe Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) (genre Acid_house)))
-(setq r34 '(R34 ((EQUAL classe Techno) (EQUAL effet reverb) (CONTAIN ligne_instrumentale un_peu_melodique)) (genre Trance))))
+            (R200 ((LESSER annee 1950))((nonGenre Rock)))
+            (R201 ((LESSER annee 1980))((nonGenre HeavyMetal)))
+            (R203 ((MEMBER instrument (GuitareElectrique Batterie Basse Clavier)))((type_instruments electrique)))
+            (R204 ((EQUAL voix cri)(EQUAL type_instruments electrique))((genre HeavyMetal)(nonGenre Rock)))
+            (R205 ((EQUAL type_instruments electrique))((genre HeavyMetal)(Genre Rock)))
+            (R206 ((EQUAL genre HeavyMetal)(EQUAL theme violence))((sousGenre DeathMetal)))
+            (R207 ((EQUAL genre HeavyMetal)(CONTAIN ligne_instrumentale melodique))((sousGenre PowerMetal)))
 
+            ;; ---Rap : 300 --- ;;
+            (R301 ((GREATER bpm 105))((nonGenre Rap)))
+            (R302 ((EQUAL voix NIL))((nonGenre Rap)))
+            (R303 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique)))
+            (R304 ((MEMBER paroles (Politique Inegalites)))((Theme engage)))
+            (R305 ((MEMBER paroles (Drogue Argent Meurtres Police)))((theme sombre)))
+            (R306 ((EQUAL type_instruments electronique) (EQUAL voix parle)) ((classe Rap)))
+            (R307 ((EQUAL genre Rap)(EQUAL Theme sombre)((sousGenre GangstaRap))))
+            (R308 ((EQUAL genre Rap)(EQUAL Theme engage)((sousGenre RapConscient))))
+            (R309 ((EQUAL genre Rap) (CONTAIN ligne_instrumentale melodique) (EQUAL vulgarite NIL)) ((sousGenre RapCommercial)))
 
-(setq bdr (list r1 r2 r3 r4 r5))
+            ;; ---Techno : 400 --- ;;
+            ;;meme que R303
+            ;;(setq r30 '(R30 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))))
+            (R401 ((EQUAL type_instruments electronique) (CONTAIN ligne_instrumentale repetitive)) (genre Techno))
+            (R402 ((EQUAL genre Techno) (EQUAL voix chant) (EQUAL rythme minimal)) (sousGenre House))
+            (R403 ((EQUAL genre Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) (sousGenre Acid_house))
+            (R404 ((EQUAL genre Techno) (EQUAL effet reverb) (CONTAIN ligne_instrumentale un_peu_melodique)) (sousGenre Trance))
+
+            )
+      )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;GETTERs;;;;;;;;;;;;
@@ -61,5 +77,24 @@
         )
       )
     )
+  )
+(defun checkGREATERPrem (prem bdf)
+  (if (assoc (getPremName prem) bdf)
+      (if (> (cadr (assoc (getPremName prem) bdf)) (getPremValue prem))
+          T
+        NIL
+        )
+    NIL
+    )
+  )
+(defun checkLESSERPrem (prem bdf)
+  (if (assoc (getPremName prem) bdf)
+      (if (< (cadr (assoc (getPremName prem) bdf)) (getPremValue prem))
+          T
+        NIL
+        )
+    NIL
+    )
+
   )
 
