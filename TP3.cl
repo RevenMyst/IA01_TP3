@@ -34,7 +34,7 @@
 
             ;; ---Techno : 400 --- ;;
             ;;meme que R303
-            ;;(setq r30 '(R30 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))))
+            ;;(setq r303 '(R303 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))))
             (R401 ((EQUAL type_instruments electronique) (CONTAIN ligne_instrumentale repetitive)) (genre Techno))
             (R402 ((EQUAL genre Techno) (EQUAL voix chant) (EQUAL rythme minimal)) (sousGenre House))
             (R403 ((EQUAL genre Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) (sousGenre Acid_house))
