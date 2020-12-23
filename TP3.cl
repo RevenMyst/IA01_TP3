@@ -40,6 +40,7 @@
             (R402 ((EGAL classe Techno) (EGAL voix chant) (EGAL rythme minimal)) (genre House)) 
             (R403 ((EGAL classe Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) (genre Acid_house)) 
             (R404 ((EGAL classe Techno) (EGAL effet reverb) (CONTAIN ligne_instrumentale un_peu_melodique)) (genre Trance)) 
+            (R405 ((EGAL voix parle) (nonGenre Techno)))
            
             )
       )
