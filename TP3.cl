@@ -25,8 +25,8 @@
             (R203 ((MEMBRE instruments (GuitareElectrique Batterie Basse Clavier)))((type_instruments electrique))) 
             (R204 ((EGAL voix cri)(EGAL type_instruments electrique))((nonGenre Rock))) 
             (R205 ((EGAL type_instruments electrique))((genre HeavyMetal)(Genre Rock))) 
-            (R206 ((EGAL genre HeavyMetal)(EGAL theme violence))((sousGenre DeathMetal))) 
-            (R207 ((EGAL genre HeavyMetal)(CONTAIN ligne_instrumentale melodique))((sousGenre PowerMetal)))
+            (R206 ((EGAL genre HeavyMetal)(EGAL theme violence))((sousGenre (HeavyMetal DeathMetal)))) 
+            (R207 ((EGAL genre HeavyMetal)(CONTAIN ligne_instrumentale melodique))((sousGenre (HeavyMetal PowerMetal))))
 
             ;; ---Rap : 300 --- ;; 
             (R301 ((GREATER bpm 105))((nonGenre Rap))) 
@@ -43,7 +43,7 @@
             ;;(setq r303 '(R303 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique)))) 
             (R402 ((EGAL voix parle)) ((nonGenre Techno)))
             (R401 ((EGAL type_instruments electronique) (CONTAIN ligne_instrumentale repetitive)) ((genre Techno))) 
-            (R402 ((EGAL genre Techno) (EGAL voix chant) (EGAL rythme minimal)) ((sousGenre House))) 
+            (R402 ((EGAL genre Techno) (EGAL voix chant) (EGAL rythme minimal)) ((sousGenre (Techno House)))) 
             (R403 ((EGAL genre Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) ((sousGenre (Techno Acid_house))))
             (R404 ((EGAL genre Techno) (EGAL effet reverb) (CONTAIN ligne_instrumentale un_peu_melodique)) ((sousGenre (Techno Trance)))) 
            
@@ -209,19 +209,21 @@
       (if (equal (car x) 'nonGenre)
           (progn 
             ;; on retire le genre
-            (delete (cadr x) resGenre)
-            (delete (cadr x) genresNonDiscr)
+            (setq resGenres (delete (cadr x) resGenre))
+            (setq genresNonDiscr (delete (cadr x) genresNonDiscr))
             ;; on retire les sous genres
             (dolist (y resSousGenre)
               (if (equal (car y) (cadr x))
-                  (delete y resSousGenre)
+                  (setq resSousGenre (delete y resSousGenre))
                 )
               )
+            ;; NB : delete est sensé modifier la list mais cela ne semble pas toujours fonctionner
+            ;; d'ou le setq en plus
             )
         
         )
       )
-    
+
     (format t "Genres possibles : ~s ~%Genres probables : ~s ~%Sous genres probables ~s " genresNonDiscr resGenre resSousGenre)
 
 
@@ -229,4 +231,4 @@
   )
 
 (setq prem '(CONTAIN ligne_instrumentale melodique))
-(setq bdf '((vulgarite NIL)(annee 1970)(ligne_instrumentale (melodique repetitive))(instruments (synthetiseur percussions))(voix parle))) 
+(setq bdf '((instruments (guitareElectrique)) (voix cri)(parole mort))) 
