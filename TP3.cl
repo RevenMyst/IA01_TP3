@@ -24,7 +24,8 @@
             (R201 ((LESSER annee 1980))((nonGenre HeavyMetal))) 
             (R203 ((MEMBRE instruments (GuitareElectrique Batterie Basse Clavier)))((type_instruments electrique))) 
             (R204 ((EGAL voix cri))((nonGenre Rock))) 
-            (R205 ((EGAL type_instruments electrique))((genre HeavyMetal)(Genre Rock))) 
+            (R205 ((EGAL type_instruments electrique))((Genre Rock))) 
+            (R205 ((EGAL type_instruments electrique)(EGAL voix cri))((Genre HeavyMetal))) 
             (R206 ((EGAL genre HeavyMetal)(EGAL theme violence))((sousGenre (HeavyMetal DeathMetal)))) 
             (R207 ((EGAL genre HeavyMetal)(CONTAIN ligne_instrumentale melodique))((sousGenre (HeavyMetal PowerMetal))))
 
@@ -50,6 +51,11 @@
             ;; --- Pop : 500 --- ;;
             (R501 ((EGAL voix cri))((nonGenre POP))) 
             (R502 ((EGAL theme amour)(EGAL type_instruments electrique))((genre POP)(nonGenre Rock)))
+            (R503 ((EGAL Genre POP)(EGAL Langue Japonais))((sousGenre (POP J-POP))))
+            (R503 ((EGAL Genre POP)(EGAL Langue Coreen))((sousGenre (POP K-POP))))
+            
+            ;; --- Jazz : 600 --- ;;
+            (601 ((MEMBRE instruments (Saxophone Trompette clarinette)))(genre Jazz))
             
             )
       )
@@ -208,13 +214,13 @@
         )
 
       )
-    (print newbdf)
+    ;; -- debug (print newBdf)
     ;; on retire les genres impossibles
     (dolist (x newBdf)
       (if (equal (car x) 'nonGenre)
           (progn 
             ;; on retire le genre
-            (setq resGenres (delete (cadr x) resGenre))
+            (setq resGenre (delete (cadr x) resGenre))
             (setq genresNonDiscr (delete (cadr x) genresNonDiscr))
             ;; on retire les sous genres
             (dolist (y resSousGenre)
@@ -236,4 +242,4 @@
   )
 
 (setq prem '(CONTAIN ligne_instrumentale melodique))
-(setq bdf '((instruments (guitareElectrique)) (theme Amour))) 
+(setq bdf '((instruments (guitareElectrique)) (theme Amour)(langue Japonais))) 
