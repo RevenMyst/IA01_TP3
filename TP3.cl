@@ -16,14 +16,14 @@
             (R107 ((EGAL parole crime))((theme sombre)))
             (R108 ((EGAL parole argent))((theme sombre)))
             (R109 ((EGAL parole drogue))((theme sombre)))
- 
+            (R110 ((EGAL parole amour))((theme amour)))
 
             ;; ---Rock Metal : 200 --- ;;
 
             (R200 ((LESSER annee 1950))((nonGenre Rock))) 
             (R201 ((LESSER annee 1980))((nonGenre HeavyMetal))) 
             (R203 ((MEMBRE instruments (GuitareElectrique Batterie Basse Clavier)))((type_instruments electrique))) 
-            (R204 ((EGAL voix cri)(EGAL type_instruments electrique))((nonGenre Rock))) 
+            (R204 ((EGAL voix cri))((nonGenre Rock))) 
             (R205 ((EGAL type_instruments electrique))((genre HeavyMetal)(Genre Rock))) 
             (R206 ((EGAL genre HeavyMetal)(EGAL theme violence))((sousGenre (HeavyMetal DeathMetal)))) 
             (R207 ((EGAL genre HeavyMetal)(CONTAIN ligne_instrumentale melodique))((sousGenre (HeavyMetal PowerMetal))))
@@ -46,7 +46,11 @@
             (R402 ((EGAL genre Techno) (EGAL voix chant) (EGAL rythme minimal)) ((sousGenre (Techno House)))) 
             (R403 ((EGAL genre Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) ((sousGenre (Techno Acid_house))))
             (R404 ((EGAL genre Techno) (EGAL effet reverb) (CONTAIN ligne_instrumentale un_peu_melodique)) ((sousGenre (Techno Trance)))) 
-           
+            
+            ;; --- Pop : 500 --- ;;
+            (R501 ((EGAL voix cri))((nonGenre POP))) 
+            (R502 ((EGAL theme amour)(EGAL type_instruments electrique))((genre POP)(nonGenre Rock)))
+            
             )
       )
 
@@ -204,6 +208,7 @@
         )
 
       )
+    (print newbdf)
     ;; on retire les genres impossibles
     (dolist (x newBdf)
       (if (equal (car x) 'nonGenre)
@@ -231,4 +236,4 @@
   )
 
 (setq prem '(CONTAIN ligne_instrumentale melodique))
-(setq bdf '((instruments (guitareElectrique)) (voix cri)(parole mort))) 
+(setq bdf '((instruments (guitareElectrique)) (theme Amour))) 
