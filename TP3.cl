@@ -55,7 +55,7 @@
             (R503 ((EGAL Genre POP)(EGAL Langue Coreen))((sousGenre (POP K-POP))))
             
             ;; --- Jazz : 600 --- ;;
-            (601 ((MEMBRE instruments (Saxophone Trompette clarinette)))(genre Jazz))
+            (R601 ((MEMBRE instruments (Saxophone Trompette clarinette)))(genre Jazz))
             
             )
       )
