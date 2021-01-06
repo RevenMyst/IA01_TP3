@@ -4,9 +4,44 @@
 
 (setq bdr '(
             
+            ;; ---Liste des éléments demandés à l'utilisateur + caractérisation--- ;;
+                ;ELEMENT Parole
+                    ;mort, meurtre, crime, politique, inegalite, police, meurtres, crime, argent, drogue,
+                    ;amour, philosophique, pacifiste, humoristique, dejante
+
+                ;ELEMENT Annee
+                    ;XXXX
+
+                ;ELEMENT Voix
+                    ;cri, NIL, chante, parle
+
+                ;LISTE Instruments
+                    ;guitareElectrique, batterie, basse, clavier, synthetiseur, platinedj, percussions,
+                    ;sample, saxophone, trompette, clarinette
+
+                ;ELEMENT Ligne instrumentale
+                    ;melodique, un_peu_melodique, non melodique
+
+                ;ELEMENT Langue
+                    ;japonais, coréen,
+
+                ;ELEMENT Effet
+                    ;reverb,
+
+                ;ELEMENT Usage
+                    ;film, ecoute, autre
+
+                ;ELEMENT Rythme
+                    ;minimal, marque
+
+                ;ELEMENT Synthetiseur
+                    ;Roland_tb_303
+
             ;; ---General : 100 --- ;;
             
-            (R100 ((EGAL parole mort))((theme violence))) 
+                ;; ---Themes--- ;;
+
+            (R100 ((EGAL parole mort))((theme violence)))
             (R101 ((EGAL parole meurtre))((theme violence))) 
             (R102 ((EGAL parole crime))((theme violence))) 
             (R103 ((EGAL parole politique))((theme engage))) 
@@ -17,6 +52,15 @@
             (R108 ((EGAL parole argent))((theme sombre)))
             (R109 ((EGAL parole drogue))((theme sombre)))
             (R110 ((EGAL parole amour))((theme amour)))
+            (R111 ((EGAL parole amour))((theme poetique)))
+            (R112 ((EGAL parole philosophique))((theme poetique)))
+            (R113 ((EGAL parole pacifiste))((theme poetique)))
+            (R114 ((EGAL parole humoristique))((theme troll)))
+            (R115 ((EGAL parole dejante))((theme troll)))
+
+                ;; ---n---;;
+
+
 
             ;; ---Rock Metal : 200 --- ;;
 
@@ -29,17 +73,22 @@
             (R206 ((EGAL genre HeavyMetal)(EGAL theme violence))((sousGenre (HeavyMetal DeathMetal)))) 
             (R207 ((EGAL genre HeavyMetal)(CONTAIN ligne_instrumentale melodique))((sousGenre (HeavyMetal PowerMetal))))
 
-            ;; ---Rap : 300 --- ;; 
+            ;; ---Rap : 300 --- ;;
+
             (R301 ((GREATER bpm 105))((nonGenre Rap))) 
             (R302 ((EGAL voix NIL))((nonGenre Rap))) 
-            (R303 ((MEMBRE instruments (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique))) 
- 
+            (R303 ((MEMBRE instruments (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique)))
             (R306 ((EGAL type_instruments electronique) (EGAL voix parle)) ((genre Rap))) 
             (R307 ((EGAL genre Rap)(EGAL Theme sombre)((sousGenre (Rap GangstaRap))))) 
-            (R308 ((EGAL genre Rap)(EGAL Theme engage)((sousGenre (Rap RapConscient))))) 
+            (R308 ((EGAL genre Rap)(EGAL Theme engage)((sousGenre (Rap RapConscient)))))
             (R309 ((EGAL genre Rap) (CONTAIN ligne_instrumentale melodique) (EGAL vulgarite NIL)) ((sousGenre (Rap RapCommercial))))
+            (R310 ((EGAL genre Rap)(EGAL Theme poetique)((sousGenre (Rap RapPoetique)))))
+            (R311 ((EGAL genre Rap)(EGAL parole egocentree)(EGAL Rimes pauvres)((sousGenre (Rap RapEgotrip)))))
+            (R312 ((EGAL genre Rap)(EGAL theme troll)((sousGenre (Rap RapTroll)))))
+            (R312 ((EGAL genre Rap)(EGAL tempo lent)(EGAL rythme marque)((sousGenre (Rap RapTrap)))))
 
-            ;; ---Techno : 400 --- ;; 
+            ;; ---Techno : 400 --- ;;
+
             ;;meme que R303 
             ;;(setq r303 '(R303 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique)))) 
             (R402 ((EGAL voix parle)) ((nonGenre Techno)))
@@ -49,15 +98,33 @@
             (R404 ((EGAL genre Techno) (EGAL effet reverb) (CONTAIN ligne_instrumentale un_peu_melodique)) ((sousGenre (Techno Trance)))) 
             
             ;; --- Pop : 500 --- ;;
+
             (R501 ((EGAL voix cri))((nonGenre POP))) 
             (R502 ((EGAL theme amour)(EGAL type_instruments electrique))((genre POP)(nonGenre Rock)))
             (R503 ((EGAL Genre POP)(EGAL Langue Japonais))((sousGenre (POP J-POP))))
             (R503 ((EGAL Genre POP)(EGAL Langue Coreen))((sousGenre (POP K-POP))))
             
             ;; --- Jazz : 600 --- ;;
+
             (R601 ((MEMBRE instruments (Saxophone Trompette clarinette)))(genre Jazz))
-            
-            )
+
+            ;; --- Cinéma : 700 --- ;;
+
+            (R701 ((EGAL usage film))((genre Cinema)))
+            (R702 ((EGAL theme amour))((sousGenre CinemaRomantique)))
+
+            ;; --- Hymne : 800 --- ;;
+
+            (R800 ((EGAL voix NIL))((nonGenre Hymne)))
+            (R801 ((EGAL parole patriote))((genre Hymne)))
+
+            ;; --- Fonctionnel : 900 --- ;;
+
+            (R900 ((EGAL source autre))((genre Fonctionnel)))
+
+
+
+
       )
 
 
