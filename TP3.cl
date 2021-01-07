@@ -22,6 +22,9 @@
                 ;ELEMENT Ligne instrumentale
                     ;melodique, un_peu_melodique, non melodique
             
+                ;ELEMENT organisationMélodique  :::: peut être à intégrer dans ligne intrumentale ? 
+                    ;contrepoint, harmonie,  (pour la musique classique)
+            
                 ;ELEMENT type_instruments
                     ;accoustique, electrique, electronique
 
