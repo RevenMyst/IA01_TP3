@@ -12,30 +12,36 @@
                 ;ELEMENT Annee
                     ;XXXX
 
-                ;ELEMENT Voix
+                ;ELEMENT voix
                     ;cri, NIL, chante, parle
+            
+                ;ELEMENT rimes
+                    ; pauvres, riches
+            
+                ;ELEMENT (booleen ?) vulgarité
 
                 ;LISTE Instruments
                     ;guitareElectrique, batterie, basse, clavier, synthetiseur, platinedj, percussions,
                     ;sample, saxophone, trompette, clarinette
+                    ;piano, clarinette, clavecin, orgue, viole de gambe, violoncelle, flute
 
                 ;ELEMENT Ligne instrumentale
-                    ;melodique, un_peu_melodique, non melodique
+                    ;melodique, un_peu_melodique, non melodique, repetitive, contrepoint
             
-                ;ELEMENT organisationMélodique  :::: peut être à intégrer dans ligne intrumentale ? 
-                    ;contrepoint, harmonie,  (pour la musique classique)
+                ;ELEMENT formation_instrumentale
+                    ;orchestre 
             
                 ;ELEMENT type_instruments
                     ;accoustique, electrique, electronique
 
                 ;ELEMENT Langue
-                    ;japonais, coréen,
+                    ;japonais, coréen, latin 
 
                 ;ELEMENT Effet
                     ;reverb,
 
                 ;ELEMENT Usage
-                    ;film, ecoute, autre
+                    ;film, ecoute, religieux, autre 
 
                 ;ELEMENT Rythme
                     ;minimal, marque
@@ -83,13 +89,13 @@
 
             (R301 ((GREATER bpm 105))((nonGenre Rap))) 
             (R302 ((EGAL voix NIL))((nonGenre Rap))) 
-            (R303 ((MEMBRE instruments (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique)))
+            (R303 ((MEMBRE instruments (synthetiseur platineDJ percussions basse samples)))((type_instruments electronique)))
             (R306 ((EGAL type_instruments electronique) (EGAL voix parle)) ((genre Rap))) 
-            (R307 ((EGAL genre Rap)(EGAL Theme sombre)((sousGenre (Rap GangstaRap))))) 
-            (R308 ((EGAL genre Rap)(EGAL Theme engage)((sousGenre (Rap RapConscient)))))
+            (R307 ((EGAL genre Rap)(EGAL theme sombre)((sousGenre (Rap GangstaRap))))) 
+            (R308 ((EGAL genre Rap)(EGAL theme engage)((sousGenre (Rap RapConscient)))))
             (R309 ((EGAL genre Rap) (CONTAIN ligne_instrumentale melodique) (EGAL vulgarite NIL)) ((sousGenre (Rap RapCommercial))))
-            (R310 ((EGAL genre Rap)(EGAL Theme poetique)((sousGenre (Rap RapPoetique)))))
-            (R311 ((EGAL genre Rap)(EGAL parole egocentree)(EGAL Rimes pauvres)((sousGenre (Rap RapEgotrip)))))
+            (R310 ((EGAL genre Rap)(EGAL theme poetique)((sousGenre (Rap RapPoetique)))))
+            (R311 ((EGAL genre Rap)(EGAL parole egocentree)(EGAL rimes pauvres)((sousGenre (Rap RapEgotrip)))))
             (R312 ((EGAL genre Rap)(EGAL theme troll)((sousGenre (Rap RapTroll)))))
             (R312 ((EGAL genre Rap)(EGAL tempo lent)(EGAL rythme marque)((sousGenre (Rap RapTrap)))))
 
@@ -107,12 +113,12 @@
 
             (R501 ((EGAL voix cri))((nonGenre POP))) 
             (R502 ((EGAL theme amour)(EGAL type_instruments electrique))((genre POP)(nonGenre Rock)))
-            (R503 ((EGAL Genre POP)(EGAL Langue Japonais))((sousGenre (POP J-POP))))
-            (R503 ((EGAL Genre POP)(EGAL Langue Coreen))((sousGenre (POP K-POP))))
+            (R503 ((EGAL genre POP)(EGAL langue Japonais))((sousGenre (POP J-POP))))
+            (R503 ((EGAL genre POP)(EGAL langue Coreen))((sousGenre (POP K-POP))))
             
             ;; --- Jazz : 600 --- ;;
 
-            (R601 ((MEMBRE instruments (Saxophone Trompette clarinette)))(genre Jazz))
+            (R601 ((MEMBRE instruments (saxophone trompette clarinette)))(genre Jazz))
 
             ;; --- Cinéma : 700 --- ;;
 
@@ -127,6 +133,21 @@
             ;; --- Fonctionnel : 900 --- ;;
 
             (R900 ((EGAL source autre))((genre Fonctionnel)))
+            
+            ;; --- Musique classique : 1000 --- ;;
+
+            (R1001 ((MEMBER instruments (orgue clavecin piano clarinette violon contrebasse violoncelle flute)) ((genre MusiqueClassique))) 
+            (R1002 ((EGAL genre MusiqueClassique) (MEMBRE instruments (clavecin orgue violeDeGambe) (EGAL ligne_instrumentale contrepoint)) (sousGenre (MusiqueClassique MusiqueClassiqueBaroque))) 
+            (R1003 ((EGAL genre MusiqueClassique) (MEMBRE instruments (clarinette piano)) (EGAL formation_instrumentale orchestre))) ((sousGenre (MusiqueClassique MusiqueClassiqueClassique))) 
+            (R1004 ((EGAL genre MusiqueClassique) (GREATER annee 1900) (LESSER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueModerne)))
+            (R1005 ((EGAL genre MusiqueClassique) (GREATER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueContemporaine))) 
+       
+            ;; --- Chants grégoriens : 1100 --- ;; 
+                   
+            (R1100 ((LESSER annee 1600) (EGAL usage religieux) (EGAL langue latin)) ((genre ChantGregorien))) 
+            (R1101 ((EGAL voix nil)) ((nonGenre ChantGregorien)) 
+
+ 
 
 
 
