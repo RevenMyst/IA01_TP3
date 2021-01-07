@@ -18,7 +18,7 @@
                 ;ELEMENT rimes
                     ; pauvres, riches
             
-                ;ELEMENT vulgarité
+                ;ELEMENT vulgarite
                     ; T NIL
 
                 ;LISTE Instruments
@@ -36,7 +36,7 @@
                     ;accoustique, electrique, electronique
 
                 ;ELEMENT Langue
-                    ;japonais, coréen, latin 
+                    ;japonais, coreen, latin 
 
                 ;ELEMENT Effet
                     ;reverb,
@@ -88,7 +88,6 @@
 
             ;; ---Rap : 300 --- ;;
 
-            (R301 ((GREATER bpm 105))((nonGenre Rap))) 
             (R302 ((EGAL voix NIL))((nonGenre Rap))) 
             (R303 ((MEMBRE instruments (synthetiseur platineDJ percussions basse samples)))((type_instruments electronique)))
             (R306 ((EGAL type_instruments electronique) (EGAL voix parle)) ((genre Rap))) 
@@ -99,6 +98,11 @@
             (R311 ((EGAL genre Rap)(EGAL parole egocentree)(EGAL rimes pauvres)((sousGenre (Rap RapEgotrip)))))
             (R312 ((EGAL genre Rap)(EGAL theme troll)((sousGenre (Rap RapTroll)))))
             (R312 ((EGAL genre Rap)(EGAL tempo lent)(EGAL rythme marque)((sousGenre (Rap RapTrap)))))
+			(R313 ((MEMBRE instruments (piano clarinette clavecin orgue viole de gambe violoncelle flute guitareElectrique)))((nonGenre Rap)))
+			(R314 ((EGAL voix chante))((nonGenre Rap)))
+			(R315 ((EGAL langue latin))((nonGenre Rap)))
+			(R316 ((EGAL usage religion))((nonGenre Rap)))
+			
 
             ;; ---Techno : 400 --- ;;
 
@@ -132,6 +136,7 @@
             ;; --- Fonctionnel : 900 --- ;;
 
             (R900 ((EGAL usage autre))((genre Fonctionnel)))
+			(R901 ((EGAL usage film))((genre Fonctionnel)))
             
             ;; --- Musique classique : 1000 --- ;;
 
