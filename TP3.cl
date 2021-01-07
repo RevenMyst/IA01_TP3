@@ -4,7 +4,7 @@
 
 (setq bdr '(
             
-            ;; ---Liste des éléments demandés à l'utilisateur + caractérisation--- ;;
+            ;; ---Liste des Ã©lÃ©ments demandÃ©s Ã  l'utilisateur + caractÃ©risation--- ;;
                 ;ELEMENT Parole
                     ;mort, meurtre, crime, politique, inegalite, police, meurtres, crime, argent, drogue,
                     ;amour, philosophique, pacifiste, humoristique, dejante, patriote
@@ -21,9 +21,12 @@
 
                 ;ELEMENT Ligne instrumentale
                     ;melodique, un_peu_melodique, non melodique
+            
+                ;ELEMENT type_instruments
+                    ;accoustique, electrique, electronique
 
                 ;ELEMENT Langue
-                    ;japonais, coréen,
+                    ;japonais, corÃ©en,
 
                 ;ELEMENT Effet
                     ;reverb,
@@ -108,7 +111,7 @@
 
             (R601 ((MEMBRE instruments (Saxophone Trompette clarinette)))(genre Jazz))
 
-            ;; --- Cinéma : 700 --- ;;
+            ;; --- CinÃ©ma : 700 --- ;;
 
             (R701 ((EGAL usage film))((genre Cinema)))
             (R702 ((EGAL theme amour))((sousGenre CinemaRomantique)))
@@ -209,7 +212,7 @@
       )
     )
   )
-;; appelle le bon checker pour une premisse donnée
+;; appelle le bon checker pour une premisse donnÃ©e
 (defun checkPrem (prem bdf)
   (cond
    ((equal (getPremType prem) 'EGAL) (checkEGALPrem prem bdf))
@@ -244,7 +247,7 @@
       ;; on boucle tant que la bdf varie en parcourant les regles
       (if (EQUAL bdf
                  (dolist (x bdr bdf)
-                   ;; si la regle na pas deja été appliquée et que ses premisses sont verifiées
+                   ;; si la regle na pas deja Ã©tÃ© appliquÃ©e et que ses premisses sont verifiÃ©es
                    ;; on ajoute la conclusion a la bdf
                    (if (AND (NOT (member (getRuleName x) usedRule)) (checkAllPrem x bdf))
                        (progn 
@@ -295,7 +298,7 @@
                   (setq resSousGenre (delete y resSousGenre))
                 )
               )
-            ;; NB : delete est sensé modifier la list mais cela ne semble pas toujours fonctionner
+            ;; NB : delete est sensÃ© modifier la list mais cela ne semble pas toujours fonctionner
             ;; d'ou le setq en plus
             )
         
