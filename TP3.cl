@@ -4,13 +4,13 @@
 
 (setq bdr '(
             
-            ;; ---Liste des √©l√©ments demand√©s √† l'utilisateur + caract√©risation--- ;;
+            ;; ---Liste des ÈlÈments demand√©s √† l'utilisateur + caract√©risation--- ;;
                 ;ELEMENT Parole
                     ;mort, meurtre, crime, politique, inegalite, police, meurtres, crime, argent, drogue,
                     ;amour, philosophique, pacifiste, humoristique, dejante, patriote
 
                 ;ELEMENT Annee
-                    ;XXXX
+                    ;Entier
 
                 ;ELEMENT voix
                     ;cri, NIL, chante, parle
@@ -18,14 +18,15 @@
                 ;ELEMENT rimes
                     ; pauvres, riches
             
-                ;ELEMENT (booleen ?) vulgarit√©
+                ;ELEMENT vulgaritÈ
+                    ; T NIL
 
                 ;LISTE Instruments
                     ;guitareElectrique, batterie, basse, clavier, synthetiseur, platinedj, percussions,
                     ;sample, saxophone, trompette, clarinette
                     ;piano, clarinette, clavecin, orgue, viole de gambe, violoncelle, flute
 
-                ;ELEMENT Ligne instrumentale
+                ;LISTE Ligne instrumentale
                     ;melodique, un_peu_melodique, non melodique, repetitive, contrepoint
             
                 ;ELEMENT formation_instrumentale
@@ -35,7 +36,7 @@
                     ;accoustique, electrique, electronique
 
                 ;ELEMENT Langue
-                    ;japonais, cor√©en, latin 
+                    ;japonais, corÈen, latin 
 
                 ;ELEMENT Effet
                     ;reverb,
@@ -81,9 +82,9 @@
             (R203 ((MEMBRE instruments (GuitareElectrique Batterie Basse Clavier)))((type_instruments electrique))) 
             (R204 ((EGAL voix cri))((nonGenre Rock))) 
             (R205 ((EGAL type_instruments electrique))((Genre Rock))) 
-            (R205 ((EGAL type_instruments electrique)(EGAL voix cri))((Genre HeavyMetal))) 
-            (R206 ((EGAL genre HeavyMetal)(EGAL theme violence))((sousGenre (HeavyMetal DeathMetal)))) 
-            (R207 ((EGAL genre HeavyMetal)(CONTAIN ligne_instrumentale melodique))((sousGenre (HeavyMetal PowerMetal))))
+            (R206 ((EGAL type_instruments electrique)(EGAL voix cri))((Genre HeavyMetal))) 
+            (R207 ((EGAL genre HeavyMetal)(EGAL theme violence))((sousGenre (HeavyMetal DeathMetal)))) 
+            (R208 ((EGAL genre HeavyMetal)(CONTAIN ligne_instrumentale melodique))((sousGenre (HeavyMetal PowerMetal))))
 
             ;; ---Rap : 300 --- ;;
 
@@ -101,8 +102,6 @@
 
             ;; ---Techno : 400 --- ;;
 
-            ;;meme que R303 
-            ;;(setq r303 '(R303 ((MEMBER instrument (Synthetiseur PlatineDJ Percussions Basse Samples)))((type_instruments electronique)))) 
             (R402 ((EGAL voix parle)) ((nonGenre Techno)))
             (R401 ((EGAL type_instruments electronique) (CONTAIN ligne_instrumentale repetitive)) ((genre Techno))) 
             (R402 ((EGAL genre Techno) (EGAL voix chant) (EGAL rythme minimal)) ((sousGenre (Techno House)))) 
@@ -118,9 +117,9 @@
             
             ;; --- Jazz : 600 --- ;;
 
-            (R601 ((MEMBRE instruments (saxophone trompette clarinette)))(genre Jazz))
+            (R601 ((MEMBRE instruments (saxophone trompette clarinette)))((genre Jazz)))
 
-            ;; --- Cin√©ma : 700 --- ;;
+            ;; --- CinÈma : 700 --- ;;
 
             (R701 ((EGAL usage film))((genre Cinema)))
             (R702 ((EGAL theme amour))((sousGenre CinemaRomantique)))
@@ -132,26 +131,22 @@
 
             ;; --- Fonctionnel : 900 --- ;;
 
-            (R900 ((EGAL source autre))((genre Fonctionnel)))
+            (R900 ((EGAL usage autre))((genre Fonctionnel)))
             
             ;; --- Musique classique : 1000 --- ;;
 
-            (R1001 ((MEMBER instruments (orgue clavecin piano clarinette violon contrebasse violoncelle flute)) ((genre MusiqueClassique))) 
-            (R1002 ((EGAL genre MusiqueClassique) (MEMBRE instruments (clavecin orgue violeDeGambe) (EGAL ligne_instrumentale contrepoint)) (sousGenre (MusiqueClassique MusiqueClassiqueBaroque))) 
-            (R1003 ((EGAL genre MusiqueClassique) (MEMBRE instruments (clarinette piano)) (EGAL formation_instrumentale orchestre))) ((sousGenre (MusiqueClassique MusiqueClassiqueClassique))) 
-            (R1004 ((EGAL genre MusiqueClassique) (GREATER annee 1900) (LESSER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueModerne)))
-            (R1005 ((EGAL genre MusiqueClassique) (GREATER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueContemporaine))) 
+            (R1001 ((MEMBER instruments (orgue clavecin piano clarinette violon contrebasse violoncelle flute)) ((genre MusiqueClassique)))) 
+            (R1002 ((EGAL genre MusiqueClassique) (MEMBRE instruments (clavecin orgue violeDeGambe) (EGAL ligne_instrumentale contrepoint)) (sousGenre (MusiqueClassique MusiqueClassiqueBaroque)))) 
+            (R1003 ((EGAL genre MusiqueClassique) (MEMBRE instruments (clarinette piano)) (EGAL formation_instrumentale orchestre)) ((sousGenre (MusiqueClassique MusiqueClassiqueClassique)))) 
+            (R1004 ((EGAL genre MusiqueClassique) (GREATER annee 1900) (LESSER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueModerne))))
+            (R1005 ((EGAL genre MusiqueClassique) (GREATER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueContemporaine)))) 
        
             ;; --- Chants gr√©goriens : 1100 --- ;; 
                    
             (R1100 ((LESSER annee 1600) (EGAL usage religieux) (EGAL langue latin)) ((genre ChantGregorien))) 
-            (R1101 ((EGAL voix nil)) ((nonGenre ChantGregorien)) 
+            (R1101 ((EGAL voix nil)) ((nonGenre ChantGregorien))) 
 
- 
-
-
-
-
+            )
       )
 
 
@@ -271,10 +266,11 @@
       ;; on boucle tant que la bdf varie en parcourant les regles
       (if (EQUAL bdf
                  (dolist (x bdr bdf)
-                   ;; si la regle na pas deja √©t√© appliqu√©e et que ses premisses sont verifi√©es
+                   ;; si la regle na pas deja ÈtÈ appliquÈe et que ses prÈmisses sont verifiÈes
                    ;; on ajoute la conclusion a la bdf
                    (if (AND (NOT (member (getRuleName x) usedRule)) (checkAllPrem x bdf))
                        (progn 
+                         ;; -- debug (print x)
                          (dolist (y (getCCL x) bdf)
                            (push y bdf)
                            )
@@ -294,7 +290,7 @@
   (let ((newBdf NIL)
         (resGenre NIL)
         (resSousGenre NIL)
-        (genresNonDiscr '(Rock HeavyMetal Techno Rap))
+        (genresNonDiscr '(Rock HeavyMetal Techno Rap Jazz Pop ChantGregorien Cinema Fonctionnel musiqueClassique))
         )
     ;; on rempli la bdf en faisant tourner l'algo
     (setq newBdf (algo bdf bdr))
@@ -335,5 +331,7 @@
     )
   )
 
-(setq prem '(CONTAIN ligne_instrumentale melodique))
+
+(setq bdf '((instruments (guitareElectrique basse batterie)) (parole meurtre)(voix cri))) 
+(setq bdf '((instruments (guitareElectrique)) (theme Amour)(langue Japonais))) 
 (setq bdf '((instruments (guitareElectrique)) (theme Amour)(langue Japonais))) 
