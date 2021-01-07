@@ -140,7 +140,7 @@
             
             ;; --- Musique classique : 1000 --- ;;
 
-            (R1001 ((MEMBER instruments (orgue clavecin piano clarinette violon contrebasse violoncelle flute)) ((genre MusiqueClassique)))) 
+            (R1001 ((MEMBRE instruments (orgue clavecin piano clarinette violon contrebasse violoncelle flute))) ((genre MusiqueClassique)))
             (R1002 ((EGAL genre MusiqueClassique) (MEMBRE instruments (clavecin orgue violeDeGambe) (EGAL ligne_instrumentale contrepoint)) (sousGenre (MusiqueClassique MusiqueClassiqueBaroque)))) 
             (R1003 ((EGAL genre MusiqueClassique) (MEMBRE instruments (clarinette piano)) (EGAL formation_instrumentale orchestre)) ((sousGenre (MusiqueClassique MusiqueClassiqueClassique)))) 
             (R1004 ((EGAL genre MusiqueClassique) (GREATER annee 1900) (LESSER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueModerne))))
@@ -338,5 +338,6 @@
 
 
 (setq bdf '((instruments (guitareElectrique basse batterie)) (parole meurtre)(voix cri))) 
+(setq bdf '((instruments (percussions synthetiseur))(voix parle)(vulgarite NIL)(ligne_instrumentale (melodique))))
 (setq bdf '((instruments (guitareElectrique)) (theme Amour)(langue Japonais))) 
-(setq bdf '((instruments (guitareElectrique)) (theme Amour)(langue Japonais))) 
+
