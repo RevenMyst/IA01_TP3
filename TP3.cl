@@ -7,7 +7,7 @@
             ;; ---Liste des éléments demandés à l'utilisateur + caractérisation--- ;;
                 ;ELEMENT Parole
                     ;mort, meurtre, crime, politique, inegalite, police, meurtres, crime, argent, drogue,
-                    ;amour, philosophique, pacifiste, humoristique, dejante
+                    ;amour, philosophique, pacifiste, humoristique, dejante, patriote
 
                 ;ELEMENT Annee
                     ;XXXX
