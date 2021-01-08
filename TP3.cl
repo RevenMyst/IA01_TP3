@@ -108,7 +108,7 @@
 
             (R402 ((EGAL voix parle)) ((nonGenre Techno)))
             (R401 ((EGAL type_instruments electronique) (CONTAIN ligne_instrumentale repetitive)) ((genre Techno))) 
-            (R402 ((EGAL genre Techno) (NOT (EGAL voix nil)) (EGAL usage danse)) ((sousGenre (Techno House)))) 
+            (R402 ((EGAL genre Techno) (EGAL voix chant) (EGAL usage danse)) ((sousGenre (Techno House)))) 
             (R403 ((EGAL genre Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) ((sousGenre (Techno Acid_house))))
             (R404 ((EGAL genre Techno) (EGAL effet reverb) (CONTAIN ligne_instrumentale un_peu_melodique)) ((sousGenre (Techno Trance)))) 
             
