@@ -4,7 +4,7 @@
 
 (setq bdr '(
             
-            ;; ---Liste des �l�ments demandés à l'utilisateur + caractérisation--- ;;
+            ;; ---Liste des éléments demandÃ©s Ã  l'utilisateur + caractÃ©risation--- ;;
                 ;ELEMENT Parole
                     ;mort, meurtre, crime, politique, inegalite, police, meurtres, crime, argent, drogue,
                     ;amour, philosophique, pacifiste, humoristique, dejante, patriote
@@ -42,7 +42,7 @@
                     ;reverb,
 
                 ;ELEMENT Usage
-                    ;film, ecoute, religieux, autre 
+                    ;film, ecoute, danse, religieux, autre 
 
                 ;ELEMENT Rythme
                     ;minimal, marque
@@ -108,7 +108,7 @@
 
             (R402 ((EGAL voix parle)) ((nonGenre Techno)))
             (R401 ((EGAL type_instruments electronique) (CONTAIN ligne_instrumentale repetitive)) ((genre Techno))) 
-            (R402 ((EGAL genre Techno) (EGAL voix chant) (EGAL rythme minimal)) ((sousGenre (Techno House)))) 
+            (R402 ((EGAL genre Techno) (NOT (EGAL voix nil)) (EGAL usage danse)) ((sousGenre (Techno House)))) 
             (R403 ((EGAL genre Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) ((sousGenre (Techno Acid_house))))
             (R404 ((EGAL genre Techno) (EGAL effet reverb) (CONTAIN ligne_instrumentale un_peu_melodique)) ((sousGenre (Techno Trance)))) 
             
@@ -123,7 +123,7 @@
 
             (R601 ((MEMBRE instruments (saxophone trompette clarinette)))((genre Jazz)))
 
-            ;; --- Cin�ma : 700 --- ;;
+            ;; --- Cinéma : 700 --- ;;
 
             (R701 ((EGAL usage film))((genre Cinema)))
             (R702 ((EGAL theme amour))((sousGenre CinemaRomantique)))
@@ -146,7 +146,7 @@
             (R1004 ((EGAL genre MusiqueClassique) (GREATER annee 1900) (LESSER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueModerne))))
             (R1005 ((EGAL genre MusiqueClassique) (GREATER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueContemporaine)))) 
        
-            ;; --- Chants grégoriens : 1100 --- ;; 
+            ;; --- Chants grÃ©goriens : 1100 --- ;; 
                    
             (R1100 ((LESSER annee 1600) (EGAL usage religieux) (EGAL langue latin)) ((genre ChantGregorien))) 
             (R1101 ((EGAL voix nil)) ((nonGenre ChantGregorien))) 
@@ -236,7 +236,7 @@
       )
     )
   )
-;; appelle le bon checker pour une premisse donnée
+;; appelle le bon checker pour une premisse donnÃ©e
 (defun checkPrem (prem bdf)
   (cond
    ((equal (getPremType prem) 'EGAL) (checkEGALPrem prem bdf))
@@ -271,7 +271,7 @@
       ;; on boucle tant que la bdf varie en parcourant les regles
       (if (EQUAL bdf
                  (dolist (x bdr bdf)
-                   ;; si la regle na pas deja �t� appliqu�e et que ses pr�misses sont verifi�es
+                   ;; si la regle na pas deja été appliquée et que ses prémisses sont verifiées
                    ;; on ajoute la conclusion a la bdf
                    (if (AND (NOT (member (getRuleName x) usedRule)) (checkAllPrem x bdf))
                        (progn 
@@ -323,7 +323,7 @@
                   (setq resSousGenre (delete y resSousGenre))
                 )
               )
-            ;; NB : delete est sensé modifier la list mais cela ne semble pas toujours fonctionner
+            ;; NB : delete est sensÃ© modifier la list mais cela ne semble pas toujours fonctionner
             ;; d'ou le setq en plus
             )
         
