@@ -79,7 +79,7 @@
 
             (R601 ((MEMBRE instruments (saxophone trompette clarinette)))((genre Jazz)))
 
-            ;; --- Cinéma : 700 --- ;;
+            ;; --- CinÃ©ma : 700 --- ;;
 
             (R701 ((EGAL usage film))((genre Cinema)))
             (R702 ((EGAL theme amour))((sousGenre CinemaRomantique)))
@@ -102,11 +102,10 @@
             (R1004 ((EGAL genre MusiqueClassique) (GREATER annee 1900) (LESSER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueModerne))))
             (R1005 ((EGAL genre MusiqueClassique) (GREATER annee 1950)) ((sousGenre (MusiqueClassique MusiqueClassiqueContemporaine)))) 
        
-            ;; --- Chants grÃ©goriens : 1100 --- ;; 
+            ;; --- Chants grÃƒÂ©goriens : 1100 --- ;; 
                    
-            (R1100 ((LESSER annee 1600) (EGAL usage religieux) (EGAL langue latin)) ((genre ChantGregorien))) 
+            (R1100 ((EGAL usage religieux) (EGAL langue latin)) ((genre ChantGregorien))) 
             (R1101 ((EGAL voix nil)) ((nonGenre ChantGregorien))) 
-
             )
       )
 
@@ -192,7 +191,7 @@
       )
     )
   )
-;; appelle le bon checker pour une premisse donnÃ©e
+;; appelle le bon checker pour une premisse donnÃƒÂ©e
 (defun checkPrem (prem bdf)
   (cond
    ((equal (getPremType prem) 'EGAL) (checkEGALPrem prem bdf))
@@ -227,7 +226,7 @@
       ;; on boucle tant que la bdf varie en parcourant les regles
       (if (EQUAL bdf
                  (dolist (x bdr bdf)
-                   ;; si la regle na pas deja été appliquée et que ses prémisses sont verifiées
+                   ;; si la regle na pas deja Ã©tÃ© appliquÃ©e et que ses prÃ©misses sont verifiÃ©es
                    ;; on ajoute la conclusion a la bdf
                    (if (AND (NOT (member (getRuleName x) usedRule)) (checkAllPrem x bdf))
                        (progn 
@@ -279,7 +278,7 @@
                   (setq resSousGenre (delete y resSousGenre))
                 )
               )
-            ;; NB : delete est sens� modifier la list mais cela ne semble pas toujours fonctionner
+            ;; NB : delete est sensé modifier la list mais cela ne semble pas toujours fonctionner
             ;; d'ou le setq en plus
             )
         
