@@ -251,7 +251,7 @@
   (let ((newBdf NIL)
         (resGenre NIL)
         (resSousGenre NIL)
-        (genresNonDiscr '(Rock HeavyMetal Techno Rap Jazz Pop ChantGregorien Cinema Fonctionnel musiqueClassique))
+        (genresNonDiscr '(Rock HeavyMetal Techno Rap Jazz Pop ChantGregorien Cinema Fonctionnel MusiqueClassique))
         )
     ;; on rempli la bdf en faisant tourner l'algo
     (setq newBdf (algo bdf bdr))
