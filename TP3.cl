@@ -97,16 +97,16 @@
             (R310 ((EGAL genre Rap)(EGAL theme poetique)((sousGenre (Rap RapPoetique)))))
             (R311 ((EGAL genre Rap)(EGAL parole egocentree)(EGAL rimes pauvres)((sousGenre (Rap RapEgotrip)))))
             (R312 ((EGAL genre Rap)(EGAL theme troll)((sousGenre (Rap RapTroll)))))
-            (R312 ((EGAL genre Rap)(EGAL tempo lent)(EGAL rythme marque)((sousGenre (Rap RapTrap)))))
-			(R313 ((MEMBRE instruments (piano clarinette clavecin orgue viole de gambe violoncelle flute guitareElectrique)))((nonGenre Rap)))
-			(R314 ((EGAL voix chante))((nonGenre Rap)))
-			(R315 ((EGAL langue latin))((nonGenre Rap)))
-			(R316 ((EGAL usage religion))((nonGenre Rap)))
+            (R313 ((EGAL genre Rap)(EGAL tempo lent)(EGAL rythme marque)((sousGenre (Rap RapTrap)))))
+            (R317 ((MEMBRE instruments (piano clarinette clavecin orgue viole de gambe violoncelle flute guitareElectrique)))((nonGenre Rap)))
+            (R314 ((EGAL voix chante))((nonGenre Rap)))
+            (R315 ((EGAL langue latin))((nonGenre Rap)))
+            (R316 ((EGAL usage religion))((nonGenre Rap)))
 			
 
             ;; ---Techno : 400 --- ;;
 
-            (R402 ((EGAL voix parle)) ((nonGenre Techno)))
+            (R400 ((EGAL voix parle)) ((nonGenre Techno)))
             (R401 ((EGAL type_instruments electronique) (CONTAIN ligne_instrumentale repetitive)) ((genre Techno))) 
             (R402 ((EGAL genre Techno) (EGAL voix chant) (EGAL usage danse)) ((sousGenre (Techno House)))) 
             (R403 ((EGAL genre Techno) (CONTAIN instruments (synthetiseur_Roland_TB_303))) ((sousGenre (Techno Acid_house))))
@@ -117,7 +117,7 @@
             (R501 ((EGAL voix cri))((nonGenre POP))) 
             (R502 ((EGAL theme amour)(EGAL type_instruments electrique))((genre POP)(nonGenre Rock)))
             (R503 ((EGAL genre POP)(EGAL langue Japonais))((sousGenre (POP J-POP))))
-            (R503 ((EGAL genre POP)(EGAL langue Coreen))((sousGenre (POP K-POP))))
+            (R504 ((EGAL genre POP)(EGAL langue Coreen))((sousGenre (POP K-POP))))
             
             ;; --- Jazz : 600 --- ;;
 
@@ -323,7 +323,7 @@
                   (setq resSousGenre (delete y resSousGenre))
                 )
               )
-            ;; NB : delete est sensÃ© modifier la list mais cela ne semble pas toujours fonctionner
+            ;; NB : delete est sens� modifier la list mais cela ne semble pas toujours fonctionner
             ;; d'ou le setq en plus
             )
         
@@ -337,7 +337,7 @@
   )
 
 
-(setq bdf '((instruments (guitareElectrique basse batterie)) (parole meurtre)(voix cri))) 
-(setq bdf '((instruments (percussions synthetiseur))(voix parle)(vulgarite NIL)(ligne_instrumentale (melodique)))) 
-(setq bdf '((instruments (guitareElectrique)) (theme Amour)(langue Japonais))) 
+(setq bdf2 '((instruments (guitareElectrique basse batterie)) (parole meurtre)(voix cri))) 
+(setq bdf1 '((instruments (percussions synthetiseur))(voix parle)(vulgarite NIL)(ligne_instrumentale (melodique)))) 
+(setq bdf3 '((instruments (guitareElectrique)) (theme Amour)(langue Japonais))) 
 
