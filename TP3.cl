@@ -4,51 +4,7 @@
 
 (setq bdr '(
             
-            ;; ---Liste des éléments demandÃ©s Ã  l'utilisateur + caractÃ©risation--- ;;
-                ;ELEMENT Parole
-                    ;mort, meurtre, crime, politique, inegalite, police, meurtres, crime, argent, drogue,
-                    ;amour, philosophique, pacifiste, humoristique, dejante, patriote
 
-                ;ELEMENT Annee
-                    ;Entier
-
-                ;ELEMENT voix
-                    ;cri, NIL, chante, parle
-            
-                ;ELEMENT rimes
-                    ; pauvres, riches
-            
-                ;ELEMENT vulgarite
-                    ; T NIL
-
-                ;LISTE Instruments
-                    ;guitareElectrique, batterie, basse, clavier, synthetiseur, platinedj, percussions,
-                    ;sample, saxophone, trompette, clarinette
-                    ;piano, clarinette, clavecin, orgue, viole de gambe, violoncelle, flute
-
-                ;LISTE Ligne instrumentale
-                    ;melodique, un_peu_melodique, non melodique, repetitive, contrepoint
-            
-                ;ELEMENT formation_instrumentale
-                    ;orchestre 
-            
-                ;ELEMENT type_instruments
-                    ;accoustique, electrique, electronique
-
-                ;ELEMENT Langue
-                    ;japonais, coreen, latin 
-
-                ;ELEMENT Effet
-                    ;reverb,
-
-                ;ELEMENT Usage
-                    ;film, ecoute, danse, religieux, autre 
-
-                ;ELEMENT Rythme
-                    ;minimal, marque
-
-                ;ELEMENT Synthetiseur
-                    ;Roland_tb_303
 
             ;; ---General : 100 --- ;;
             
@@ -295,7 +251,7 @@
   (let ((newBdf NIL)
         (resGenre NIL)
         (resSousGenre NIL)
-        (genresNonDiscr '(Rock HeavyMetal Techno Rap Jazz Pop ChantGregorien Cinema Fonctionnel musiqueClassique))
+        (genresNonDiscr '(Rock HeavyMetal Techno Rap Jazz Pop ChantGregorien Cinema Fonctionnel MusiqueClassique))
         )
     ;; on rempli la bdf en faisant tourner l'algo
     (setq newBdf (algo bdf bdr))
