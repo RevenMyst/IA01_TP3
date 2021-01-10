@@ -291,8 +291,13 @@
     )
   )
 
-
+;; exemples de fonctionnement donnés lors de la présentation orale
 (setq bdf2 '((instruments (guitareElectrique basse batterie)) (parole meurtre)(voix cri))) 
 (setq bdf1 '((instruments (percussions synthetiseur))(voix parle)(vulgarite NIL)(ligne_instrumentale (melodique)))) 
 (setq bdf3 '((instruments (guitareElectrique)) (theme Amour)(langue Japonais))) 
+
+;; exemples de scénarios d'utilisation donnés dans le rapport du projet
+(setq scenario-1 ‘((annee 2017) (ligne_instrumentale (melodique)) (voix parle) (usage ecoute) (instruments (percussions synthetiseur)) (rimes pauvres)))
+(setq scenario-2 ‘((instruments (piano violon percussions)) (voix chante) (ligne_instrumentale (melodique)) (usage film)))
+
 
